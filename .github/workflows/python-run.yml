@@ -15,12 +15,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11.2"
-
+        
       - name: Install Node.js and upgrade pip
         run: |
           apt-get update && apt-get install -y curl
@@ -29,6 +24,12 @@ jobs:
           python -m pip install --upgrade pip
           # Add any dependencies here if needed
           # pip install -r requirements.txt
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11.2"
+
 
       - name: Run Python script
         run: |
