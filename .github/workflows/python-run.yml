@@ -10,7 +10,7 @@ jobs:
   run-python:
     runs-on: ubuntu-latest
     container:
-      image: node:18  # Has Node.js for actions + can install Python
+      image: python:3.11
 
     steps:
       - name: Checkout repository
@@ -19,15 +19,17 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"  # Works better than specific versions
+          python-version: "3.11.2"
 
-      - name: Verify Python version
+      - name: Install Node.js and upgrade pip
         run: |
-          python --version
+          apt-get update && apt-get install -y curl
+          curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+          apt-get install -y nodejs
           python -m pip install --upgrade pip
+          # Add any dependencies here if needed
+          # pip install -r requirements.txt
 
       - name: Run Python script
         run: |
-          pwd
-          ls -lah
           python src/main.py
