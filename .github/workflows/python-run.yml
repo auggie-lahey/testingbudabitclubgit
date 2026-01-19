@@ -15,12 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-                  
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.13'
-
-      - name: Run Python script
+      - name: Run bash
         run: |
-          python src/main.py
+          ls -lah
+          pwd
+          echo "hello, nostrverse"
