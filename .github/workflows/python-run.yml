@@ -30,4 +30,6 @@ jobs:
 
       - name: Run Python script
         run: |
+        pwd
+        ls -lah
           python src/main.py
